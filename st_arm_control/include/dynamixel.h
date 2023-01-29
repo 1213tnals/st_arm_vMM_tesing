@@ -128,7 +128,7 @@ class Dynamixel{
   ~Dynamixel();
 
   void SetTorqueRef(VectorXd);
-  VectorXd GetTorqueAct();
+  // VectorXd GetTorqueAct();
   void SetThetaRef(VectorXd);
   VectorXd GetThetaAct();
   VectorXd GetThetaDot();

@@ -21,16 +21,17 @@ public:
   Callback();
 
   void HMDTFCallback(const geometry_msgs::PoseStamped::ConstPtr &msg);
-  void joint_states_callback(const sensor_msgs::JointState::ConstPtr &msg);
+  // void joint_states_callback(const sensor_msgs::JointState::ConstPtr &msg);
   void SwitchMode(const std_msgs::Int32ConstPtr &msg);
   void SwitchGainTaskSpaceP(const std_msgs::Float32MultiArrayConstPtr &msg);
-  void SwitchGainTaskSpaceD(const std_msgs::Float32MultiArrayConstPtr &msg);
+  // void SwitchGainTaskSpaceD(const std_msgs::Float32MultiArrayConstPtr &msg);
   void SwitchGainTaskSpaceW(const std_msgs::Float32MultiArrayConstPtr &msg);
   void SwitchGainP(const std_msgs::Float32MultiArrayConstPtr &msg);
   void SwitchGainD(const std_msgs::Float32MultiArrayConstPtr &msg);
   void SwitchGainR(const std_msgs::Float32MultiArrayConstPtr &msg);
   void InitializePose(const std_msgs::BoolConstPtr &msg);
   void GripperCallback(const std_msgs::Float32ConstPtr &msg);
+  void JoysticCallback(const geometry_msgs::PoseStamped::ConstPtr &msg);
 
 private:
 

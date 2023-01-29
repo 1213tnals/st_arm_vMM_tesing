@@ -12,14 +12,13 @@ public:
     rmd_motor();
 
     unsigned char ref_data[8];
-    unsigned char ref_data2[8];
-    unsigned char enc_data[8];
-    unsigned char torque_data[8];
-    unsigned char speed_data[8];
+    // unsigned char ref_data2[8];
+    unsigned char enc_data_v2[8];
+    unsigned char enc_data_v3[8];
 
     int     count;
-    int     count_92;
-    int     count_A1;
+    // int     count_92;
+    // int     count_A1;
     int     count_A2;
     int     unknown_value;
 
@@ -34,7 +33,7 @@ public:
     float   data_to_radian;
 
     void    UpdateRxData(void);
-    void    SetTorqueData(void);
+    // void    SetTorqueData(void);
     float   GetTheta();
     float   GetThetaV3();
     float   GetThetaDot();
@@ -49,8 +48,8 @@ private:
 
     float   motor_theta_last;
 
-    float   joint_theta_92;
-    float   joint_theta_offset_92;
+    // float   joint_theta_92;
+    // float   joint_theta_offset_92;
 };
 
 #endif // RMD_MOTOR_H

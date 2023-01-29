@@ -2,7 +2,7 @@
 
 static rmd_can obj;
 
-extern rmd_motor _DEV_MC[num_of_rmdX];                              //4 rmd motor for wheel
+extern rmd_motor _BASE_MC[num_of_rmdX];                              //4 rmd motor for wheel
 
 pthread_mutex_t rmd_can::mutex_reference[12];
 ST_CAN  rmd_can::reference_msg[12];
@@ -35,7 +35,7 @@ rmd_can::rmd_can()
 
         reference_msg[i].dlc = 8;
         // reference_msg[i].id = 0x140+i;
-        // for(int j=0; j<8; j++) reference_msg[i].data[j] = _DEV_MC[i].ref_data[j];
+        // for(int j=0; j<8; j++) reference_msg[i].data[j] = _BASE_MC[i].ref_data[j];
     }
 }
 

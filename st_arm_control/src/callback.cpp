@@ -1,10 +1,11 @@
 #include "callback.h"
 
-extern rmd_motor _DEV_MC[4];
+extern rmd_motor _BASE_MC[4];
 extern Dynamics::JMDynamics jm_dynamics;
+extern Mobile_Base mobile_base;
 
 
-Callback::Callback(){}
+Callback::Callback() {}
 
 
 void Callback::SwitchMode(const std_msgs::Int32ConstPtr &msg)
@@ -55,11 +56,23 @@ void Callback::SwitchGainR(const std_msgs::Float32MultiArrayConstPtr &msg)
 
 void Callback::InitializePose(const std_msgs::BoolConstPtr &msg)
 {
-  if(msg->data) for(uint8_t i=0; i<6; i++) _DEV_MC[i].initialize_position = true;
+  if(msg->data) for(uint8_t i=0; i<6; i++) _BASE_MC[i].initialize_position = true;
   std::cout << "Initialized Pose" << std::endl;
 }
 
 void Callback::GripperCallback(const std_msgs::Float32ConstPtr &msg)
 {
   jm_dynamics.SetGripperValue(msg->data);
+}
+
+void Callback::JoysticCallback(const geometry_msgs::PoseStamped::ConstPtr &msg)
+{
+  mobile_base.joystick_poision.x() = msg->pose.position.x;
+  mobile_base.joystick_poision.y() = msg->pose.position.y;
+  mobile_base.joystick_poision.z() = msg->pose.position.z;
+
+  mobile_base.joystick_quaternion.x() = msg->pose.orientation.x;
+  mobile_base.joystick_quaternion.y() = msg->pose.orientation.y;
+  mobile_base.joystick_quaternion.z() = msg->pose.orientation.z;
+  mobile_base.joystick_quaternion.w() = msg->pose.orientation.w;
 }

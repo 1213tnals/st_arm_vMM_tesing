@@ -1,6 +1,7 @@
 #include "dynamics.h"
 
 extern Motor_Controller motor_ctrl;
+extern Mobile_Base base_ctrl;
 
 namespace Dynamics
 {
@@ -15,11 +16,11 @@ namespace Dynamics
     {
         SetTheta(motor_ctrl.GetJointTheta());
         SetThetaDotSMAF(motor_ctrl.GetThetaDotSMAF());
-        GetWheelSpeed(motor_ctrl.GetWheelSpeed());
+        base_ctrl.GetWheelSpeed(motor_ctrl.GetWheelSpeed());
         PostureGeneration();                       //Making Manupulator tau
-        BaseMovingGeneration();                    //Making Base speed
+        Mobile_Base::BaseMovingGeneration();       //Making Base speed
         motor_ctrl.SetTorque(GetTorque());
-        motor_ctrl.SetWheelSpeed(ref_speed);
+        motor_ctrl.SetWheelSpeed(base_ctrl.ref_wheel_speed);
     }
 
 
@@ -58,35 +59,6 @@ namespace Dynamics
                 GenerateTorqueGravityCompensation();
         }
     }
-
-    void JMDynamics::BaseMovingGeneration()
-    {
-        // ref_speed[0] = speed[0];
-        // just go straight
-        ref_speed[0] = 1;   //FL
-        ref_speed[1] = 1;   //BL
-        ref_speed[2] = 1;   //FR
-        ref_speed[3] = 1;   //BR
-
-        // // just go back
-        // ref_speed[0] = -1;
-        // ref_speed[1] = -1;
-        // ref_speed[2] = -1;
-        // ref_speed[3] = -1;
-
-        // // just go left
-        // ref_speed[0] = -1;
-        // ref_speed[1] = 1;
-        // ref_speed[2] = 1;
-        // ref_speed[3] = -1;
-
-        // // just go right
-        // ref_speed[0] = 1;
-        // ref_speed[1] = -1;
-        // ref_speed[2] = -1;
-        // ref_speed[3] = 1;
-    }
-
 
     void JMDynamics::SwitchMode(const std_msgs::Int32ConstPtr & msg)
     {
@@ -144,11 +116,6 @@ namespace Dynamics
             is_object_catched = false;
             is_object_dropped = true;
         }
-    }
-
-    void JMDynamics::GetWheelSpeed(VectorXd a_speed)
-    {
-        for(uint8_t i=0; i<4; i++) speed[i] = a_speed[i];
     }
 
     VectorXd JMDynamics::GetTorque()

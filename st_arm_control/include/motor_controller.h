@@ -30,23 +30,23 @@ public:
   Motor_Controller();
   //~Motor_Controller();
 
-  VectorXd GetThetaX();
-  VectorXd GetThetaL();
-  VectorXd GetTheta();
+  // VectorXd GetThetaX();
+  // VectorXd GetThetaL();
+  // VectorXd GetTheta();
   VectorXd GetJointTheta();
   VectorXd GetThetaDot();
-  VectorXd GetThetaDotEst();
+  // VectorXd GetThetaDotEst();
   VectorXd GetThetaDotSMAF();
   VectorXd GetTorque();
-  VectorXd GetWheelSpeed();
+  // VectorXd GetWheelSpeed();
 
   void EnableMotor();
   void SetTorque(VectorXd tau);
-  void SetWheelSpeed(VectorXd speed);
-  void SetPosition(VectorXd theta);  
+  void SetWheelSpeed(VectorXd wheel_speed);
+  // void SetPosition(VectorXd theta);  
   void ReadTheta(); 
   void EnableFilter();
-  void ReadCurrentLoopPI();
+  // void ReadCurrentLoopPI();
 };
 
 
