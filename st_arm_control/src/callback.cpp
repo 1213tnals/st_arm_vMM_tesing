@@ -2,7 +2,7 @@
 
 extern rmd_motor _BASE_MC[4];
 extern Dynamics::JMDynamics jm_dynamics;
-extern Mobile_Base mobile_base;
+extern Mobile_Base base_ctrl;
 
 
 Callback::Callback() {}
@@ -67,12 +67,12 @@ void Callback::GripperCallback(const std_msgs::Float32ConstPtr &msg)
 
 void Callback::JoysticCallback(const geometry_msgs::PoseStamped::ConstPtr &msg)
 {
-  mobile_base.joystick_poision.x() = msg->pose.position.x;
-  mobile_base.joystick_poision.y() = msg->pose.position.y;
-  mobile_base.joystick_poision.z() = msg->pose.position.z;
+  base_ctrl.joystick_position.x() = msg->pose.position.x;
+  base_ctrl.joystick_position.y() = msg->pose.position.y;
+  base_ctrl.joystick_position.z() = msg->pose.position.z;
 
-  mobile_base.joystick_quaternion.x() = msg->pose.orientation.x;
-  mobile_base.joystick_quaternion.y() = msg->pose.orientation.y;
-  mobile_base.joystick_quaternion.z() = msg->pose.orientation.z;
-  mobile_base.joystick_quaternion.w() = msg->pose.orientation.w;
+  base_ctrl.joystick_quaternion.x() = msg->pose.orientation.x;
+  base_ctrl.joystick_quaternion.y() = msg->pose.orientation.y;
+  base_ctrl.joystick_quaternion.z() = msg->pose.orientation.z;
+  base_ctrl.joystick_quaternion.w() = msg->pose.orientation.w;
 }

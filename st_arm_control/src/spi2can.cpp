@@ -11,7 +11,8 @@
 extern pRBCORE_SHM sharedData;
 extern rmd_motor _BASE_MC[num_of_rmdX];
 
-#define SPI_SPEED 4000000
+// #define SPI_SPEED 4000000
+#define SPI_SPEED 255
 unsigned char spi_mode = SPI_MODE_0;
 unsigned char spi_bits_per_word = 8;
 unsigned char spi_speed = SPI_SPEED;

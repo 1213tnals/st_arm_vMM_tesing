@@ -1,6 +1,6 @@
 #include "motor_controller.h"
 #define   wheel_diameter    15            //cm
-#define   rad2deg           57.2957802
+// #define   rad2deg           57.2957802
 
 extern pRBCORE_SHM sharedData;
 extern rmd_motor _BASE_MC[num_of_rmdX];
@@ -105,7 +105,7 @@ VectorXd Motor_Controller::GetTorque(){
   return tau;
 }
 
-VectorXd Motor_controller::GetWheelSpeed(){
+VectorXd Motor_Controller::GetWheelSpeed(){
   VectorXd wheel_speed(num_of_rmdX); 
   for(uint8_t i=0;i<num_of_rmdX;i++)
   {

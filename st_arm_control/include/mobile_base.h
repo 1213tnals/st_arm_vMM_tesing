@@ -24,4 +24,5 @@ public:
 
 private:
 
-}
+};
+#endif  // MOBILE_BASE_H

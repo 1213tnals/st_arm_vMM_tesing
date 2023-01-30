@@ -18,7 +18,7 @@ namespace Dynamics
         SetThetaDotSMAF(motor_ctrl.GetThetaDotSMAF());
         base_ctrl.GetWheelSpeed(motor_ctrl.GetWheelSpeed());
         PostureGeneration();                       //Making Manupulator tau
-        Mobile_Base::BaseMovingGeneration();       //Making Base speed
+        base_ctrl.BaseMovingGeneration();       //Making Base speed
         motor_ctrl.SetTorque(GetTorque());
         motor_ctrl.SetWheelSpeed(base_ctrl.ref_wheel_speed);
     }

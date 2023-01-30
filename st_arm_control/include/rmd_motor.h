@@ -48,8 +48,8 @@ private:
 
     float   motor_theta_last;
 
-    // float   joint_theta_92;
-    // float   joint_theta_offset_92;
+    float   joint_theta_92;
+    float   joint_theta_offset_92;
 };
 
 #endif // RMD_MOTOR_H

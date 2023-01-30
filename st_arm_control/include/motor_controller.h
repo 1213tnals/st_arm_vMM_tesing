@@ -38,7 +38,7 @@ public:
   // VectorXd GetThetaDotEst();
   VectorXd GetThetaDotSMAF();
   VectorXd GetTorque();
-  // VectorXd GetWheelSpeed();
+  VectorXd GetWheelSpeed();
 
   void EnableMotor();
   void SetTorque(VectorXd tau);
